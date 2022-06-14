@@ -1,0 +1,8 @@
+- hosts: 172.31.83.18
+  tasks:
+    - name: Transfer file from jenkins-server to tomcat-server
+      synchronize:
+        src: apache-tomcat-8.5.81.zip
+        dest: /opt/zipfiles
+        mode: pull
+      delegate_to: tomcat-server

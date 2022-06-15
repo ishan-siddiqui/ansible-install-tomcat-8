@@ -26,3 +26,8 @@
         get_url:
           url: "{{tomcat_url}}"
           dest: /opt
+      - name: extracting downloaded tarfile
+        unarchive:
+          src: "/opt/apache-tomcat-{{req_tomcat_ver}}.tar.gz"
+          dest: "/opt/tomcat"
+          remote_src: yes

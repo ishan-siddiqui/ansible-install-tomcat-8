@@ -24,5 +24,5 @@
           path: /usr/lib/jvm/{{set_java}}/bin/java
       - name: Downloading required tomcat TAR file from website
         get_url:
-          url: {tomcat_url}
+          url: "{{tomcat_url}}"
           dest: /opt

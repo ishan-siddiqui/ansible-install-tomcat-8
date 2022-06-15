@@ -36,5 +36,6 @@
         template:
           src: server.xml.j2
           dest: /opt/tomcat/apache-tomcat-"{{req_tomcat_ver}}"/conf/server.xml
+          remote_src: yes
       - name: Starting tomcat
         shell: nohup /opt/tomcat/apache-tomcat-"{{req_tomcat_ver}}"/bin/startup.sh & #added nohup to run in background since playbook will open a new shell, run tomcat on that shell.. it closes as soon as playbook closes.. //VVI

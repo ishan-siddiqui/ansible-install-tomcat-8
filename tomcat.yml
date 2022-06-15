@@ -33,7 +33,7 @@
           dest: "/opt/tomcat"
           remote_src: yes # Written to inform that we want to look for src file and dest in remote machine where we downloaded the tar file..
       - name: Change ownership of tomcat directory
-          file:
+        file:
             path: /opt/tomcat
             owner: tomcat
             group: tomcat

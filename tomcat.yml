@@ -5,6 +5,8 @@
     vars:
       req_java: java-1.8.0-openjdk
       set_java: jre-1.8.0-openjdk
+      req_tomcat_ver: 8.5.81
+      tomcat_url: https://dlcdn.apache.org/tomcat/tomcat-{{req_tomcat_ver.split('.')[0]}}/v{{req_tomcat_ver}}/bin/apache-tomcat-{{req_tomcat_ver}}.tar.gz
     become: true
     tasks:
       - name: updating repos
@@ -19,4 +21,6 @@
         alternatives:
           name: java
           link: /usr/bin/java
-        path: /usr/lib/jvm/{{set_java}}/bin/java
+          path: /usr/lib/jvm/{{set_java}}/bin/java
+      - name: Downloading required tomcat TAR file from website
+        debug: var=tomcat_url

@@ -7,6 +7,7 @@
       set_java: jre-1.8.0-openjdk
       req_tomcat_ver: 8.5.81
       tomcat_url: https://dlcdn.apache.org/tomcat/tomcat-{{req_tomcat_ver.split('.')[0]}}/v{{req_tomcat_ver}}/bin/apache-tomcat-{{req_tomcat_ver}}.tar.gz
+      tomcat_port: 8090  
     become: true
     tasks:
       - name: updating repos
@@ -31,5 +32,9 @@
           src: "/opt/apache-tomcat-{{req_tomcat_ver}}.tar.gz"
           dest: "/opt/tomcat"
           remote_src: yes # Written to inform that we want to look for src file and dest in remote machine where we downloaded the tar file..
+      - name: modify port no. in server.xml
+        template:
+          src: server.xml.j2
+          dest: /opt/tomcat/apache-"{{req_tomcat_ver}}"/conf/server.xml
       - name: Starting tomcat
-        shell: nohup /opt/tomcat/apache-tomcat-"{{req_tomcat_ver}}"/bin/startup.sh &
+        shell: nohup /opt/tomcat/apache-tomcat-"{{req_tomcat_ver}}"/bin/startup.sh & #added nohup to run in background since playbook will open a new shell, run tomcat on that shell.. it closes as soon as playbook closes.. //VVI

@@ -19,4 +19,4 @@
         alternatives:
           name: java
           link: /usr/bin/java
-          path: /usr/lib/jvm/set_java/bin/java
+        path: /usr/lib/jvm/{{set_java}}/bin/java

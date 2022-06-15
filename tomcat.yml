@@ -32,6 +32,14 @@
           src: "/opt/apache-tomcat-{{req_tomcat_ver}}.tar.gz"
           dest: "/opt/tomcat"
           remote_src: yes # Written to inform that we want to look for src file and dest in remote machine where we downloaded the tar file..
+      - name: Change ownership of tomcat directory
+          file:
+            path: /opt/tomcat
+            owner: tomcat
+            group: tomcat
+            mode: "u+rwx,g+rx,o=rx"
+            recurse: yes
+            state: directory
       - name: modify port no. in server.xml
         template:
           src: server.xml.j2

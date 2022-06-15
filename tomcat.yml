@@ -35,8 +35,8 @@
       - name: Change ownership of tomcat directory
         file:
             path: /opt/tomcat
-            owner: tomcat
-            group: tomcat
+            owner: ec2-user
+            group: ec2-user
             mode: "u+rwx,g+rx,o=rx"
             recurse: yes
             state: directory

@@ -42,6 +42,9 @@
         template:
           src: tomcat.service.j2
           dest: "/usr/lib/systemd/system/tomcat.service"
+      - name: reload the systemd configuration
+        systemd:
+          daemon_reload: yes
       - name: enable tomcat startup
         systemd:
           name: tomcat

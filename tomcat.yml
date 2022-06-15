@@ -55,6 +55,7 @@
           daemon_reload: yes
       - name: enable tomcat startup
         systemd:
-          name: tomcat
+          name: ec2-user
           enabled: yes
-          state: restarted  
+          state: started
+          daemon_reload: yes
